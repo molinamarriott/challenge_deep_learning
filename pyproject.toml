@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
+    "imbalanced-learn>=0.12.4",
     "ipykernel>=6.29.5",
     "keras>=3.9.2",
     "matplotlib>=3.9.4",

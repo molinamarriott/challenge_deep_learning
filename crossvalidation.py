@@ -35,7 +35,7 @@ def get_data():
 
 def split_data(data):
     
-    X_train, X_test, y_train, y_test = train_test_split(data.iloc[:,2:], data.iloc[:,1], test_size=0.20)
+    X_train, X_test, y_train, y_test = train_test_split(data.iloc[:,2:], data.iloc[:,1], test_size=0.20, random_state=10)
     print(f'Train size: {X_train.shape}')
     print(f'Test size: {X_test.shape}')
     
@@ -325,6 +325,7 @@ pipeline, X_train_transformed = crear_pipeline_preprocesamiento(
 
 X_test_transformed = pipeline.transform(X_test)
 
+
 model = KerasClassifier(build_fn=create_model, verbose=0)
 
 
@@ -345,7 +346,7 @@ for batch_size in [10, 16]:
     for epochs in [8, 10, 12]:
         for optimizer in ['adam', 'rmsprop']:
             for activation in ['relu', 'tanh']:
-                for neurons in [[16, 16], [16, 8], [8, 8]]:
+                for neurons in [[16, 16], [16, 8], [8, 8], [8, 8, 8]]:
                     # Create and compile model
                     model = create_model(batch_size, epochs, optimizer, activation, neurons)
                     
